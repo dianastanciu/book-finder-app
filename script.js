@@ -12,8 +12,24 @@ let handleRequest = () => {
         $.getJSON(newGoogleAPI, response => {
             for (var i = 0; i < response.items.length; i ++) {
                 let item = response.items[i];
-                let info = "<br/>" + item.volumeInfo.title;
-                document.getElementById('content').innerHTML += info;
+
+                let card = 
+                
+                "<br/>" +
+                "<a href=\"" + item.volumeInfo.previewLink +  "\"><img src=\""+ item.volumeInfo.imageLinks.thumbnail + "\"/></a>" +
+                "<br/>" +                
+                item.volumeInfo.title +
+                "<p> by: " + item.volumeInfo.authors + "</p>" +
+                "<p> published by: " + item.volumeInfo.publisher + "</p>" +
+                "<a href=\"" + item.volumeInfo.infoLink + "\"> See this book </a> <hr/>" 
+                
+                
+                ;    
+
+
+                document.getElementById('content').innerHTML += card;
+
+                console.log(item.volumeInfo);
             }
         })
 };
