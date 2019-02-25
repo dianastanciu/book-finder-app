@@ -24,15 +24,22 @@ let handleRequest = () => {
             let cardInfo = item.volumeInfo.infoLink;
 
             let card = 
-            "<br/>" +
-            "<a href=\"" + cardImageLink +  
-            "\"><img src=\""+ cardImage + "\"/></a>" +
-            "<br/>" +                
-            cardTitle +
-            "<p> by: " + cardAuthors + "</p>" +
-            "<p> published by: " + cardPublisher + "</p>" +
-            "<a href=\"" + cardInfo + "\"> See this book </a> <hr/>" 
-            ;    
+            "<div class=\"bookCard col-md-6 col-sm-12\">" + 
+              "<div class=\"bookCard__inner row\">" +
+                  "<div class=\"col-md-5 col-sm-12\"> " +
+                    "<div class=\"bookCard__image\">"+
+                      "<a href=\"" + cardImageLink + "\" title=\"Look Inside the Book\"><img src=\""+ cardImage + "\"/></a>" +
+                    "</div>" +
+                  "</div>" +
+                  "<div class=\"col-md-7 col-sm-12\"> " + 
+                    "<h3 class=\"bookCard__title\">" + cardTitle + "</h3>" + 
+                    "<p class=\"bookCard__info\"> by: " + cardAuthors + "</p>" +
+                    "<p class=\"bookCard__info\"> published by: " + cardPublisher + "</p>" +
+                    "<button class=\"bookCard__btn\"><a href=\"" + cardInfo + "\"> See this book </a></button>" + 
+                  "</div>" +
+              "</div>" +
+            "</div>" 
+            ;
 
             setTimeout(() => {
                 document.getElementById('content').innerHTML += card;
@@ -51,7 +58,7 @@ $('input')
           handleRequest() 
       } else {
           $('#content').empty();
-          document.getElementById('content').innerHTML += '<span class="empty-content text-center">Nothing here yet. Try searching for a book!</span>';
+          document.getElementById('content').innerHTML += '<span class="empty-content mx-auto">Nothing here yet. Try searching for a book!</span>';
       } 
   })
   .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );

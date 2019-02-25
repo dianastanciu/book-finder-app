@@ -3,14 +3,16 @@
 
 :root {
   --color-main: #a1a1a1;
+  --color-main-dark: #747474;
   --color-secondary: #15cf89;
   --color-tertiary: #f1f1f1;
   --color-light: #fff;
   --color-dark: #000;
 
+  --text-subinfo: .9em;
   --text-search: 1.12em;
   --text-empty: 1.5em;
-  --text-main: 2.5em;
+  --text-main: 2.5em; 
 
   --weight-normal: 500;
   --weight-bold: 700;
@@ -39,6 +41,10 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-top: 8vh;
+}
+
+#content {
+  margin-top: 20px;
 }
 
 input {
@@ -72,6 +78,7 @@ button {
 .empty-content {
   color: var(--color-main);
   font-size: var(--text-empty);
+  padding: 0 20px;
   margin-top: 40px;
 }
 
@@ -92,4 +99,63 @@ button {
   button {
     font-size: calc(var(--text-search) - 25%);
   }
+}
+
+.bookCard__inner {
+  background-color: var(--color-light);
+  margin: 20px 10px;
+  padding: 20px;
+  position: relative;
+  min-height: 280px;
+}
+
+.bookCard__image {
+  position: absolute;
+  top: -20%;
+  box-shadow: 2px 4px 8px 2px rgba(0,0,0,.3);
+  transition: all .4s ease;
+}
+
+.bookCard__image a {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .bookCard__image {
+    position: initial;
+    top: auto;
+    box-shadow: none;
+  }
+}
+
+.bookCard__image:hover {
+  top: -15%;
+}
+
+.bookCard__title {
+  font-weight: var(--weight-bold);
+  color: var(--color-main-dark);
+  padding-top: 10px;
+}
+
+.bookCard__info {
+  color: var(--color-main);
+  font-size: var(--text-subinfo);
+  font-weight: var(--weight-bold);
+  margin-bottom: 0;
+}
+
+.bookCard__btn {
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.bookCard__btn a {
+  color: var(--color-light);
+  font-size: var(--text-subinfo);
+  display: block;
+}
+
+.bookCard__btn a:hover {
+  text-decoration: none;
 }
