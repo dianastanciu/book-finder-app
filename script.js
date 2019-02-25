@@ -41,8 +41,6 @@ let handleRequest = () => {
             "</div>" 
             ;
 
-            console.log(item);
-
             setTimeout(() => {
                 document.getElementById('content').innerHTML += card;
                 $('.loader').hide();
