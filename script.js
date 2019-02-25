@@ -1,5 +1,13 @@
+let limitWords = (textToLimit, wordLimit) => {
+  let array = textToLimit.split(' ');
+  array.length = wordLimit;
+  let string = array.toString().replace(/,/g, ' ');
+
+  return string + '...';
+}
 
 let myTrim = x => x.replace(/\s+/g,'+');
+
 var googleAPI = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 $('.loader').hide();
@@ -9,8 +17,8 @@ let handleRequest = () => {
     $('.loader').show();
 
     let value = $('input').val();
-    let q = myTrim(value);
-    let newGoogleAPI = googleAPI + q;
+    let query = myTrim(value);
+    let newGoogleAPI = googleAPI + query;
 
     $.getJSON(newGoogleAPI, response => {
         for (var i = 0; i < response.items.length; i ++) {
@@ -49,7 +57,6 @@ let handleRequest = () => {
     })
 };
 
-
 $('button').on('click', () => handleRequest());
 
 $('input')
@@ -62,11 +69,3 @@ $('input')
       } 
   })
   .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );
-
-function limitWords(textToLimit, wordLimit) {
-  let array = textToLimit.split(' ');
-  array.length = wordLimit;
-  let string = array.toString().replace(/,/g, ' ');
-
-  return string + '...';
-}
