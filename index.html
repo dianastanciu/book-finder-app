@@ -12,10 +12,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="text-center"><h3>Book Finder App</h3></div>
-                <div class="d-flex justify-content-center">
+                <div class="text-center"><h3 class="main-title">Book Finder</h3></div>
+                <div class="d-flex justify-content-center search-area">
                     <input type="search" id="bookSearch" name="q"
-                            aria-label="Search books">
+                            aria-label="Search books" placeholder="Search by book title or author...">
                     <button>Search</button>
                 </div>
             </div>
@@ -23,7 +23,9 @@
         <div class="row">
             <div class="col-12">
                 <div id="content" class="d-flex flex-column align-items-center">
-                    So empty... try searching for a book!
+                  <span class="empty-content text-center">
+                    Nothing here yet. Try searching for a book!
+                  </span>
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-center">
