@@ -24,14 +24,14 @@ let handleRequest = () => {
             let cardInfo = item.volumeInfo.infoLink;
 
             let card = 
-            "<br/>" +
-            "<a href=\"" + cardImageLink +  
-            "\"><img src=\""+ cardImage + "\"/></a>" +
-            "<br/>" +                
-            cardTitle +
-            "<p> by: " + cardAuthors + "</p>" +
-            "<p> published by: " + cardPublisher + "</p>" +
-            "<a href=\"" + cardInfo + "\"> See this book </a> <hr/>" 
+            "<div class=\"bookCard col-6\">" + 
+              "<div class=\"bookCard__inner row\">" +
+                  "<div class=\"col-6\"> <a href=\"" + cardImageLink + "\"><img src=\""+ cardImage + "\"/></a> " +
+                  "</div><div class=\"col-6\"> " + cardTitle + "<p> by: " + cardAuthors + "</p>" +
+                  "<p> published by: " + cardPublisher + "</p>" +
+                  "<a href=\"" + cardInfo + "\"> See this book </a></div>" +
+              "</div>" +
+            "</div>" 
             ;    
 
             setTimeout(() => {
@@ -51,7 +51,7 @@ $('input')
           handleRequest() 
       } else {
           $('#content').empty();
-          document.getElementById('content').innerHTML += '<span class="empty-content text-center">Nothing here yet. Try searching for a book!</span>';
+          document.getElementById('content').innerHTML += '<span class="empty-content mx-auto">Nothing here yet. Try searching for a book!</span>';
       } 
   })
   .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );
