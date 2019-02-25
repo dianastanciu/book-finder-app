@@ -32,7 +32,7 @@ let handleRequest = () => {
                     "</div>" +
                   "</div>" +
                   "<div class=\"col-md-7 col-sm-12\"> " + 
-                    "<h3 class=\"bookCard__title\">" + cardTitle + "</h3>" + 
+                    "<h3 class=\"bookCard__title\">" + limitWords(cardTitle, 6) + "</h3>" + 
                     "<p class=\"bookCard__info\"> by: " + cardAuthors + "</p>" +
                     "<p class=\"bookCard__info\"> published by: " + cardPublisher + "</p>" +
                     "<button class=\"bookCard__btn\"><a href=\"" + cardInfo + "\"> See this book </a></button>" + 
@@ -40,6 +40,8 @@ let handleRequest = () => {
               "</div>" +
             "</div>" 
             ;
+
+            console.log(item);
 
             setTimeout(() => {
                 document.getElementById('content').innerHTML += card;
@@ -62,3 +64,11 @@ $('input')
       } 
   })
   .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );
+
+function limitWords(textToLimit, wordLimit) {
+  let array = textToLimit.split(' ');
+  array.length = wordLimit;
+  let string = array.toString().replace(/,/g, ' ');
+
+  return string + '...';
+}
