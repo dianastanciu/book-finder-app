@@ -44,12 +44,14 @@ let handleRequest = () => {
 
 
 $('button').on('click', () => handleRequest());
-$('input').on('keypress input', e => { 
-    if (e.which == 13) { 
-        handleRequest() 
-    } else {
-        $('#content').empty();
-        document.getElementById('content').innerHTML += 'So empty... try searching for a book!';
-    } 
-});
-    
+
+$('input')
+  .on('keypress input', e => { 
+      if (e.which == 13) { 
+          handleRequest() 
+      } else {
+          $('#content').empty();
+          document.getElementById('content').innerHTML += '<span class="empty-content text-center">Nothing here yet. Try searching for a book!</span>';
+      } 
+  })
+  .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );
