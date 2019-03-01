@@ -8,6 +8,7 @@
   --color-tertiary: #f1f1f1;
   --color-light: #fff;
   --color-dark: #000;
+  --color-red: #e44141;
 
   --text-subinfo: .9em;
   --text-search: 1.12em;
@@ -158,4 +159,14 @@ button {
 
 .bookCard__btn a:hover {
   text-decoration: none;
+}
+
+.warning {
+    border: 2px solid var(--color-red);
+}
+
+.warning-text {
+    font-size: 13px;
+    color: var(--color-red);
+    padding: 6px 0;
 }

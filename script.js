@@ -11,15 +11,25 @@ let myTrim = x => x.replace(/\s+/g,'+');
 var googleAPI = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 $('.loader').hide();
+$('.warning-text').hide();
 
 let handleRequest = () => {
-    $('#content').empty();
-    $('.loader').show();
-
     let value = $('input').val();
     let query = myTrim(value);
     let newGoogleAPI = googleAPI + query;
 
+    $('#content').empty();
+
+    if (value) {
+      $('.loader').show();
+      $('.warning-text').hide();
+      $('input').removeClass('warning');
+    } else {
+      document.getElementById('content').innerHTML += '<span class="empty-content mx-auto">Nothing here yet. Try searching for a book!</span>';
+      $('input').addClass('warning');
+      $('.warning-text').show();
+    }
+    
     $.getJSON(newGoogleAPI, response => {
         for (var i = 0; i < response.items.length; i ++) {
             let item = response.items[i];
@@ -62,10 +72,12 @@ $('button').on('click', () => handleRequest());
 $('input')
   .on('keypress input', e => { 
       if (e.which == 13) { 
-          handleRequest() 
+          handleRequest()
       } else {
           $('#content').empty();
           document.getElementById('content').innerHTML += '<span class="empty-content mx-auto">Nothing here yet. Try searching for a book!</span>';
+          $('.warning-text').hide();
+          $('input').removeClass('warning');
       } 
   })
   .on('focus', () => ( $(window).width() < 780) ? $('html, body').animate({scrollTop: $('#bookSearch').offset().top}, 100) : '' );
